@@ -16,4 +16,6 @@
     <string name="title_activity_accueil">AccueilActivity</string>
     <string name="title_activity_lister_messages">Liste des messages</string>
 
+    <string name="title_activity_envoyer_message">Envoyer un message</string>
+
 </resources>
