@@ -1,4 +1,4 @@
-package com.example.kevin.test;
+package org.esaip.projetandroidbbvp;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -31,7 +31,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 
-public class MainActivity extends Activity {
+public class ConnexionActivity extends Activity {
 
     EditText editTextUsername;
     EditText editTextPassword;
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
     String connectValide="false";
 
 
-    private final String TAG = MainActivity.class.getSimpleName();
+    private final String TAG = ConnexionActivity.class.getSimpleName();
 
     @Override
     protected void onDestroy() {
@@ -144,7 +144,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_connexion, menu);
 
         return true;
     }
