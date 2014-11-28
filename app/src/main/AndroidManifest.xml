@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--Permission pour tester l'état de la connexion internet-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_projet"
@@ -26,6 +29,10 @@
         <activity
             android:name="org.esaip.projetandroidbbvp.ListerMessagesActivity"
             android:label="@string/title_activity_lister_messages" >
+        </activity>
+        <activity
+            android:name="org.esaip.projetandroidbbvp.EnvoyerMessageActivity"
+            android:label="@string/title_activity_envoyer_message" >
         </activity>
     </application>
 
