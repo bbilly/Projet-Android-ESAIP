@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -69,7 +70,29 @@ public class AccueilActivity extends Activity implements ListerMessagesTask.OnTa
         int id = item.getItemId();
 //noinspection SimplifiableIfStatement
         if (id == R.id.deconnexion) {
-            Toast.makeText(getApplicationContext(), "Deconnexion", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Etes vous sûr de vouloir vous deconnecter?")
+                    .setCancelable(false)
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            AccueilActivity.this.finish();
+                            //on vide les shared preferences
+                            SharedPreferences.Editor editor = getSharedPreferences("myAppPrefs", MODE_PRIVATE).edit();
+                            editor.clear();
+                            editor.commit();
+                            Intent intent = new Intent(AccueilActivity.this, ConnexionActivity.class);
+                            startActivity(intent);
+
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
             return true;
         }
         if (id == R.id.quitter) {
