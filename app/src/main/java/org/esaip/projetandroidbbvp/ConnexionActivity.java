@@ -6,14 +6,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,21 +57,35 @@ public class ConnexionActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
+
+        //Permet de garder les "credentials" en mémoire
         SharedPreferences mPrefs = this.getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
 
         if(mPrefs.getBoolean("connected",false)){
+
+            LinearLayout linearLayoutConnexion = (LinearLayout)findViewById(R.id.LinearLayoutConnexion);
+            linearLayoutConnexion.setVisibility(View.VISIBLE);
+
+            ProgressBar progressBarConnexion = (ProgressBar)findViewById(R.id.progressBarConnexion);
+            progressBarConnexion.setVisibility(View.VISIBLE);
+
             activityTask connection = new activityTask();
+
             editTextUsername = (EditText)findViewById(R.id.userNameEditText);
             editTextPassword = (EditText)findViewById(R.id.passwordEditText);
 
             editTextUsername.setText(mPrefs.getString("user","none").toString());
             editTextPassword.setText(mPrefs.getString("password","none").toString());
+
             connection.execute(editTextUsername.getText().toString(),editTextPassword.getText().toString());
+
         }else{
+
             buttonClear = (Button)findViewById(R.id.clearButton);
             buttonValidate = (Button)findViewById(R.id.validateButton);
 
             buttonClear.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     editTextUsername = (EditText)findViewById(R.id.userNameEditText);
@@ -82,17 +97,26 @@ public class ConnexionActivity extends Activity {
             });
 
             buttonValidate.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
+
                     editTextUsername = (EditText)findViewById(R.id.userNameEditText);
                     editTextPassword = (EditText)findViewById(R.id.passwordEditText);
                     errorTextView = (TextView)findViewById(R.id.errorTextView);
 
+                    //Affiche un message d'erreur si les deux champs sont vides
                     if (editTextPassword.length() ==0 || editTextUsername.length() == 0){
+
                         errorTextView.setVisibility(View.VISIBLE);
+
                     }else{
+
                         CheckBox checkBoxConnection = (CheckBox)findViewById(R.id.checkBoxConnected);
+
                         if (checkBoxConnection.isChecked()){
+
+                            //Si la checkbox est checker, on met les "credentials" en sharedPreference
                             SharedPreferences.Editor editor = getSharedPreferences("myAppPrefs", MODE_PRIVATE).edit();
                             editor.putBoolean("connected",true);
                             editor.putString("user",editTextUsername.getText().toString());
@@ -114,7 +138,7 @@ public class ConnexionActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_connexion, menu);
 
         return true;
@@ -122,18 +146,18 @@ public class ConnexionActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+    /*
+    L'activityTask permet de faire la connection au serveur en thread
+     */
     class activityTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
@@ -150,12 +174,14 @@ public class ConnexionActivity extends Activity {
                 String param = "/connect/"+params[0]+"/"+params[1];
 
                 URI uri = new URI("http","formation-android-esaip.herokuapp.com",param,"");
+
                 DefaultHttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet(uri.toASCIIString());
                 HttpResponse response = client.execute(request);
 
                 InputStream content = response.getEntity().getContent();
                 connectValide = InputStreamToString.convert(content);
+
                 if (connectValide.contains("true")){
                     retour = true;
                 }else{
@@ -181,7 +207,7 @@ public class ConnexionActivity extends Activity {
                 startActivity(intent);
 
             }else{
-                Toast.makeText(getApplicationContext(), "Loose ! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Identifiant ou mot de passe incorrecte", Toast.LENGTH_SHORT).show();
             }
 
 
