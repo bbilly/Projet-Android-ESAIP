@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="org.esaip.projetandroidbbvp.ConnexionActivity"
-            android:label="@string/titre_application" >
+            android:label="@string/titre_application"
+            android:theme="@style/AppThemeConnection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
