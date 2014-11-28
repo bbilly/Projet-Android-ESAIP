@@ -3,12 +3,13 @@
 
     <string name="nom_application">ProjetAndroidBBVP</string>
     <string name="hello_world">Test</string>
-    <string name="action_settings">Paramètres</string>
+    <string name="quitter">Quitter</string>
+    <string name="deconnexion">Deconnexion</string>
     <string name="titre_application">BBVP</string>
-    <string name="nom_projet">Projet CPI</string>
+    <string name="nom_projet">Connexion BBVP</string>
     <string name="utilisateur">Votre nom</string>
     <string name="mot_de_passe">Votre mot de passe</string>
-    <string name="rester_connecte">Rester Connecté</string>
+    <string name="rester_connecte">Rester Connecté ?</string>
     <string name="erreur">Nom d\'utilisateur ou mot de passe incorrect</string>
     <string name="vider">Vider</string>
     <string name="valider">Valider</string>
