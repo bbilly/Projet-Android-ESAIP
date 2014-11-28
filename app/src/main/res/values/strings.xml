@@ -4,7 +4,7 @@
     <string name="nom_application">ProjetAndroidBBVP</string>
     <string name="hello_world">Test</string>
     <string name="action_settings">Paramètres</string>
-    <string name="titre_application">Connexion</string>
+    <string name="titre_application">BBVP</string>
     <string name="nom_projet">Projet CPI</string>
     <string name="utilisateur">Votre nom</string>
     <string name="mot_de_passe">Votre mot de passe</string>
