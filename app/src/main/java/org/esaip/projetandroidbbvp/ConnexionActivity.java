@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -174,11 +177,8 @@ public class ConnexionActivity extends Activity {
                 InputStream content = response.getEntity().getContent();
                 connectValide = InputStreamToString.convert(content);
 
-                if (connectValide.contains("true")){
-                    retour = true;
-                }else{
-                    retour = false;
-                }
+                retour = Boolean.parseBoolean(connectValide);
+
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
@@ -192,27 +192,52 @@ public class ConnexionActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean result) {
             progressBar.setVisibility(View.INVISIBLE);
-            if(result){
-                CheckBox checkBoxConnection = (CheckBox)findViewById(R.id.checkBoxConnected);
+            if(result) {
+                CheckBox checkBoxConnection = (CheckBox) findViewById(R.id.checkBoxConnected);
 
-                if (checkBoxConnection.isChecked()){
+                if (checkBoxConnection.isChecked()) {
 
                     //Si la checkbox est checker, on met les "credentials" en sharedPreference
                     SharedPreferences.Editor editor = getSharedPreferences("myAppPrefs", MODE_PRIVATE).edit();
-                    editor.putBoolean("connected",true);
-                    editor.putString("user",editTextUsername.getText().toString());
+                    editor.putBoolean("connected", true);
+                    editor.putString("user", editTextUsername.getText().toString());
                     editor.putString("password", editTextPassword.getText().toString());
                     editor.commit();
                 }
-                Intent intent = new Intent(ConnexionActivity.this,AccueilActivity.class);
-                intent.putExtra("user",editTextUsername.getText().toString());
+                Intent intent = new Intent(ConnexionActivity.this, AccueilActivity.class);
+                intent.putExtra("user", editTextUsername.getText().toString());
                 startActivity(intent);
                 ConnexionActivity.this.finish();
+
             }else{
-                Toast.makeText(getApplicationContext(),"Identifiant ou mot de passe incorrecte", Toast.LENGTH_SHORT).show();
+                //On vérifie la connexion internet
+                if(isOnline()){
+                    errorTextView.setVisibility(View.VISIBLE);
+                }else {
+                /*
+                Permet d'appliquer un delai de 5s
+                 */
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Impossible d'accèder au serveur, réesayez plus tard.", Toast.LENGTH_SHORT).show();
+                            ConnexionActivity.this.finish();
+                        }
+                    }, 5000);
+                }
             }
+        }
 
-
+        /**
+         * Permet de retourner l'etat de la connexion internet
+         * @return true si la connexion existe
+         */
+        public boolean isOnline() {
+            ConnectivityManager cm =
+                    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            return netInfo != null && netInfo.isConnectedOrConnecting();
         }
     }
 }
