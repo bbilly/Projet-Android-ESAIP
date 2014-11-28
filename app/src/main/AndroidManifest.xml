@@ -22,6 +22,10 @@
             android:name="org.esaip.projetandroidbbvp.AccueilActivity"
             android:label="@string/title_activity_accueil" >
         </activity>
+        <activity
+            android:name="org.esaip.projetandroidbbvp.ListerMessagesActivity"
+            android:label="@string/title_activity_lister_messages" >
+        </activity>
     </application>
 
 </manifest>

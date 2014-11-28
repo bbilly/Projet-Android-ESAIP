@@ -1,17 +1,32 @@
 package org.esaip.projetandroidbbvp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class AccueilActivity extends Activity {
+    Button btn_lister = null;
+    Button btn_envoyer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
+        btn_lister = (Button) findViewById(R.id.btn_lister);
+        btn_envoyer = (Button) findViewById(R.id.btn_envoyer);
+
+        btn_lister.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new ListerMessagesTask().execute();
+            }
+        });
     }
 
 
@@ -35,5 +50,24 @@ public class AccueilActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class ListerMessagesTask extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            Intent intent = new Intent(getApplicationContext(), ListerMessagesActivity.class);
+            startActivity(intent);
+        }
     }
 }
