@@ -4,7 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ConnexionActivity">
 
     <LinearLayout
 
@@ -18,8 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewHeader"
-            android:text="@string/connection"
-            android:textSize="@dimen/titleText"
+            android:text="@string/nom_projet"
+            android:textSize="20sp"
             android:textColor="#FFFFFFFF"
             android:paddingLeft="15dp"
             android:layout_weight="0.8"
@@ -87,86 +87,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-
-            <RelativeLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity">
-
-                <TextView
-
-                    android:text="A"
-                    android:id="@+id/cube2"
-                    android:layout_centerHorizontal="true"
-                    android:background="#EE1144"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20sp"
-                    android:gravity="center"/>
-
-                <TextView
-
-                    android:text="E"
-                    android:id="@+id/cube1"
-                    android:background="#44DD55"
-                    android:layout_toLeftOf="@id/cube2"
-                    android:layout_alignTop="@id/cube2"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_gravity="center"/>
-
-                <TextView
-
-                    android:text="D"
-                    android:id="@+id/cube3"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_below="@id/cube2"
-                    android:layout_centerHorizontal="true"
-                    android:background="#44DD55"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_gravity="center"/>
-
-                <TextView
-
-                    android:text="B"
-                    android:id="@+id/cube4"
-                    android:background="#44DD55"
-                    android:layout_width="75dp"
-                    android:layout_toRightOf="@id/cube2"
-                    android:layout_alignBottom="@id/cube2"
-                    android:layout_height="75dp"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_gravity="center"/>
-
-                <TextView
-
-                    android:text="C"
-                    android:id="@+id/cube5"
-                    android:layout_width="37dp"
-                    android:layout_height="37dp"
-                    android:layout_above="@id/cube4"
-                    android:layout_alignRight="@id/cube4"
-                    android:background="#333399"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:layout_gravity="center"/>
-
-            </RelativeLayout>
             <TextView
                 android:id="@+id/errorTextView"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:background="#EE11BBAA"
-                android:layout_height="@dimen/header"
+                android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="#FFFFFFFF"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:background="@android:color/holo_red_light"
                 android:text="@string/error"/>
         </LinearLayout>
     </ScrollView>
@@ -189,7 +117,7 @@
 
         <Button
             android:id="@+id/validateButton"
-            android:text="@string/envoyer"
+            android:text="@string/valider"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
