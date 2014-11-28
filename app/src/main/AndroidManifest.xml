@@ -12,7 +12,7 @@
         <activity
             android:name="org.esaip.projetandroidbbvp.ConnexionActivity"
             android:label="@string/titre_application"
-            android:theme="@style/AppThemeConnection">
+            android:theme="@style/AppThemeConnection" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +26,10 @@
         <activity
             android:name="org.esaip.projetandroidbbvp.ListerMessagesActivity"
             android:label="@string/title_activity_lister_messages" >
+        </activity>
+        <activity
+            android:name="org.esaip.projetandroidbbvp.EnvoyerMessageActivity"
+            android:label="@string/title_activity_envoyer_message" >
         </activity>
     </application>
 
