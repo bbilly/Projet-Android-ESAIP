@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,7 +54,7 @@ public class ConnexionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_connexion);
         SharedPreferences mPrefs = this.getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
 
         if(mPrefs.getBoolean("connected",false)){
@@ -155,7 +154,7 @@ public class ConnexionActivity extends Activity {
                 HttpResponse response = client.execute(request);
 
                 InputStream content = response.getEntity().getContent();
-                connectValide = InputStreamToString.convert(content);
+                connectValide =  InputStreamToString.convert(content);
                 if (connectValide.contains("true")){
                     retour = true;
                 }else{
@@ -174,14 +173,6 @@ public class ConnexionActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean result) {
             progressBar.setVisibility(View.INVISIBLE);
-            if(result){
-                Intent intent = new Intent(MainActivity.this,ConnectedActivity.class);
-                intent.putExtra("user",editTextUsername.getText().toString());
-                startActivity(intent);
-            }else{
-                Toast.makeText(getApplicationContext(), "Loose ! ", Toast.LENGTH_SHORT).show();
-            }
-
 
         }
     }
