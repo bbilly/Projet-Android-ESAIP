@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15sp"
-                android:text="@string/user"/>
+                android:text="@string/utilisateur"/>
 
             <EditText
                 android:id="@+id/userNameEditText"
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15sp"
-                android:text="@string/password"/>
+                android:text="@string/mot_de_passe"/>
 
             <EditText
                 android:id="@+id/passwordEditText"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
-                    android:text="@string/stayConnected"
+                    android:text="@string/rester_connecte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -95,7 +95,7 @@
                 android:textColor="#fff"
                 android:gravity="center"
                 android:background="@android:color/holo_red_light"
-                android:text="@string/error"/>
+                android:text="@string/erreur"/>
         </LinearLayout>
     </ScrollView>
 
