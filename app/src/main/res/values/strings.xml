@@ -6,10 +6,12 @@
     <string name="action_settings">Paramètres</string>
     <string name="titre_application">Connexion</string>
     <string name="nom_projet">Projet CPI</string>
-    <string name="user">Votre nom</string>
-    <string name="password">Votre mot de passe</string>
-    <string name="stayConnected">Rester Connecté</string>
-    <string name="error">Nom d\'utilisateur ou mot de passe incorrect</string>
+    <string name="utilisateur">Votre nom</string>
+    <string name="mot_de_passe">Votre mot de passe</string>
+    <string name="rester_connecte">Rester Connecté</string>
+    <string name="erreur">Nom d\'utilisateur ou mot de passe incorrect</string>
     <string name="vider">Vider</string>
     <string name="valider">Valider</string>
+    <string name="title_activity_accueil">AccueilActivity</string>
+
 </resources>

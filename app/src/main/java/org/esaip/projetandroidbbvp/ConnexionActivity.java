@@ -175,11 +175,11 @@ public class ConnexionActivity extends Activity {
         protected void onPostExecute(Boolean result) {
             progressBar.setVisibility(View.INVISIBLE);
             if(result){
-                /*
-                Intent intent = new Intent(MainActivity.this,ConnectedActivity.class);
+
+                Intent intent = new Intent(ConnexionActivity.this,AccueilActivity.class);
                 intent.putExtra("user",editTextUsername.getText().toString());
                 startActivity(intent);
-                */
+
             }else{
                 Toast.makeText(getApplicationContext(), "Loose ! ", Toast.LENGTH_SHORT).show();
             }
