@@ -13,9 +13,16 @@
     <string name="erreur">Nom d\'utilisateur ou mot de passe incorrect</string>
     <string name="vider">Vider</string>
     <string name="valider">Valider</string>
+    <string name="noServer">Impossible d'accèder au serveur, réesayez plus tard.</string>
+
     <string name="title_activity_accueil">AccueilActivity</string>
     <string name="title_activity_lister_messages">Liste des messages</string>
-
     <string name="title_activity_envoyer_message">Envoyer un message</string>
+
+    <string name="deconnexion_message">Etes vous sûr de vouloir vous deconnecter?</string>
+    <string name="quitter_message">Etes vous sûr de vouloir quitter?</string>
+
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
 
 </resources>

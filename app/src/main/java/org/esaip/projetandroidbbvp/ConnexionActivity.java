@@ -221,7 +221,7 @@ public class ConnexionActivity extends Activity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Impossible d'accèder au serveur, réesayez plus tard.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),R.string.noServer, Toast.LENGTH_SHORT).show();
                             ConnexionActivity.this.finish();
                         }
                     }, 5000);

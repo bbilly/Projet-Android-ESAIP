@@ -71,9 +71,9 @@ public class AccueilActivity extends Activity implements ListerMessagesTask.OnTa
 //noinspection SimplifiableIfStatement
         if (id == R.id.deconnexion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir vous deconnecter?")
+            builder.setMessage(R.string.deconnexion_message)
                     .setCancelable(false)
-                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
                             AccueilActivity.this.finish();
@@ -86,7 +86,7 @@ public class AccueilActivity extends Activity implements ListerMessagesTask.OnTa
 
                         }
                     })
-                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -98,14 +98,14 @@ public class AccueilActivity extends Activity implements ListerMessagesTask.OnTa
         if (id == R.id.quitter) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir quitter?")
+            builder.setMessage(R.string.quitter_message)
                     .setCancelable(false)
-                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             AccueilActivity.this.finish();
                         }
                     })
-                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -125,14 +125,14 @@ public class AccueilActivity extends Activity implements ListerMessagesTask.OnTa
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Etes vous sûr de vouloir quitter?")
+        builder.setMessage(R.string.quitter_message)
                 .setCancelable(false)
-                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         AccueilActivity.this.finish();
                     }
                 })
-                .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
