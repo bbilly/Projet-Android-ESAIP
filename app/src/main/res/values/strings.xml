@@ -9,7 +9,7 @@
     <string name="user">Votre nom</string>
     <string name="password">Votre mot de passe</string>
     <string name="stayConnected">Rester Connecté</string>
-    <string name="error">Nom d'utilisateur ou mot de passe incorrect</string>
+    <string name="error">Nom d\'utilisateur ou mot de passe incorrect</string>
     <string name="vider">Vider</string>
     <string name="valider">Valider</string>
 </resources>
