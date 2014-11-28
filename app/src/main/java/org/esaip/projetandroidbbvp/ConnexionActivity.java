@@ -1,14 +1,11 @@
 package org.esaip.projetandroidbbvp;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
 
 public class ConnexionActivity extends Activity {
 
@@ -38,46 +34,21 @@ public class ConnexionActivity extends Activity {
     TextView errorTextView;
     Button buttonClear;
     Button buttonValidate;
-    boolean connectValue;
     ProgressBar progressBar;
     String connectValide="false";
 
 
-    private final String TAG = ConnexionActivity.class.getSimpleName();
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy!");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause!");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume!");
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        Log.i(TAG, "onSaveInstanceState!");
-    }
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        /*
+        Permet de garder l'affichage du message d'erreur lors du basculement de l'affichage
+         */
         errorTextView = (TextView)findViewById(R.id.errorTextView);
         if (savedInstanceState.getInt("Error") == View.VISIBLE){
             errorTextView.setVisibility(View.VISIBLE);
         }
-        Log.i(TAG, "onRestoreInstanceState");
     }
 
     @Override
@@ -179,7 +150,6 @@ public class ConnexionActivity extends Activity {
                 String param = "/connect/"+params[0]+"/"+params[1];
 
                 URI uri = new URI("http","formation-android-esaip.herokuapp.com",param,"");
-                Log.i(TAG,uri.toString());
                 DefaultHttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet(uri.toASCIIString());
                 HttpResponse response = client.execute(request);
