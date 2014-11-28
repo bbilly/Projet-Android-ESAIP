@@ -55,7 +55,7 @@ public class ConnexionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_connexion);
         SharedPreferences mPrefs = this.getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
 
         if(mPrefs.getBoolean("connected",false)){
@@ -175,9 +175,11 @@ public class ConnexionActivity extends Activity {
         protected void onPostExecute(Boolean result) {
             progressBar.setVisibility(View.INVISIBLE);
             if(result){
+                /*
                 Intent intent = new Intent(MainActivity.this,ConnectedActivity.class);
                 intent.putExtra("user",editTextUsername.getText().toString());
                 startActivity(intent);
+                */
             }else{
                 Toast.makeText(getApplicationContext(), "Loose ! ", Toast.LENGTH_SHORT).show();
             }
