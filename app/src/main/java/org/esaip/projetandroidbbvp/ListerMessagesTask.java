@@ -3,10 +3,8 @@ package org.esaip.projetandroidbbvp;
 import android.content.Intent;
 import android.os.AsyncTask;
 
-/**
- * Created by Baptiste on 28/11/2014.
- */
-class ListerMessagesTask extends AsyncTask<String, Void, Boolean> {
+
+public class ListerMessagesTask extends AsyncTask<String, Void, Boolean> {
 
     interface OnTaskEvent {
         public void onPreExecute();
