@@ -1,5 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".ConnexionActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/quitter" android:title="@string/quitter"
         android:orderInCategory="100" android:showAsAction="never" />
 </menu>

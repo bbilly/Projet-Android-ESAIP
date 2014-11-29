@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,19 +64,22 @@ public class ConnexionActivity extends Activity {
 
         //Permet de garder les "credentials" en mémoire
         SharedPreferences mPrefs = this.getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
-
+        Log.i("test", mPrefs.getAll().toString());
         if(mPrefs.getBoolean("connected",false)){
-
-            LinearLayout linearLayoutConnexion = (LinearLayout)findViewById(R.id.LinearLayoutConnexion);
-            linearLayoutConnexion.setVisibility(View.VISIBLE);
-
-            ProgressBar progressBarConnexion = (ProgressBar)findViewById(R.id.progressBarConnexion);
-            progressBarConnexion.setVisibility(View.VISIBLE);
-
-            activityTask connection = new activityTask();
 
             editTextUsername = (EditText)findViewById(R.id.userNameEditText);
             editTextPassword = (EditText)findViewById(R.id.passwordEditText);
+            editTextUsername.setVisibility(View.GONE);
+            editTextPassword.setVisibility(View.GONE);
+            LinearLayout linearLayoutConnexion = (LinearLayout)findViewById(R.id.LinearLayoutConnexion);
+            linearLayoutConnexion.setVisibility(View.VISIBLE);
+            ProgressBar progressBarConnexion = (ProgressBar)findViewById(R.id.progressBarConnexion);
+            progressBarConnexion.setVisibility(View.VISIBLE);
+
+
+            activityTask connection = new activityTask();
+
+
 
             editTextUsername.setText(mPrefs.getString("user","none").toString());
             editTextPassword.setText(mPrefs.getString("password","none").toString());
@@ -112,18 +119,6 @@ public class ConnexionActivity extends Activity {
 
                     }else{
 
-                        CheckBox checkBoxConnection = (CheckBox)findViewById(R.id.checkBoxConnected);
-
-                        if (checkBoxConnection.isChecked()){
-
-                            //Si la checkbox est checker, on met les "credentials" en sharedPreference
-                            SharedPreferences.Editor editor = getSharedPreferences("myAppPrefs", MODE_PRIVATE).edit();
-                            editor.putBoolean("connected",true);
-                            editor.putString("user",editTextUsername.getText().toString());
-                            editor.putString("password", editTextPassword.getText().toString());
-                            editor.commit();
-                        }
-
                         activityTask connection = new activityTask();
                         connection.execute(editTextUsername.getText().toString(),editTextPassword.getText().toString());
                         errorTextView.setVisibility(View.INVISIBLE);
@@ -149,7 +144,7 @@ public class ConnexionActivity extends Activity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.quitter) {
             return true;
         }
 
@@ -182,11 +177,8 @@ public class ConnexionActivity extends Activity {
                 InputStream content = response.getEntity().getContent();
                 connectValide = InputStreamToString.convert(content);
 
-                if (connectValide.contains("true")){
-                    retour = true;
-                }else{
-                    retour = false;
-                }
+                retour = Boolean.parseBoolean(connectValide);
+
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
@@ -200,17 +192,52 @@ public class ConnexionActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean result) {
             progressBar.setVisibility(View.INVISIBLE);
-            if(result){
+            if(result) {
+                CheckBox checkBoxConnection = (CheckBox) findViewById(R.id.checkBoxConnected);
 
-                Intent intent = new Intent(ConnexionActivity.this,AccueilActivity.class);
-                intent.putExtra("user",editTextUsername.getText().toString());
+                if (checkBoxConnection.isChecked()) {
+
+                    //Si la checkbox est checker, on met les "credentials" en sharedPreference
+                    SharedPreferences.Editor editor = getSharedPreferences("myAppPrefs", MODE_PRIVATE).edit();
+                    editor.putBoolean("connected", true);
+                    editor.putString("user", editTextUsername.getText().toString());
+                    editor.putString("password", editTextPassword.getText().toString());
+                    editor.commit();
+                }
+                Intent intent = new Intent(ConnexionActivity.this, AccueilActivity.class);
+                intent.putExtra("user", editTextUsername.getText().toString());
                 startActivity(intent);
+                ConnexionActivity.this.finish();
 
             }else{
-                Toast.makeText(getApplicationContext(),"Identifiant ou mot de passe incorrecte", Toast.LENGTH_SHORT).show();
+                //On vérifie la connexion internet
+                if(isOnline()){
+                    errorTextView.setVisibility(View.VISIBLE);
+                }else {
+                /*
+                Permet d'appliquer un delai de 5s
+                 */
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),R.string.noServer, Toast.LENGTH_SHORT).show();
+                            ConnexionActivity.this.finish();
+                        }
+                    }, 5000);
+                }
             }
+        }
 
-
+        /**
+         * Permet de retourner l'etat de la connexion internet
+         * @return true si la connexion existe
+         */
+        public boolean isOnline() {
+            ConnectivityManager cm =
+                    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            return netInfo != null && netInfo.isConnectedOrConnecting();
         }
     }
 }
