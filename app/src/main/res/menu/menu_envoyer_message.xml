@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.esaip.projetandroidbbvp.EnvoyerMessageActivity">
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"></item>
 
     <item android:id="@+id/action_settings" android:title="@string/quitter"></item>
 

@@ -2,15 +2,19 @@ package org.esaip.projetandroidbbvp;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 /**
  * Created by Baptiste on 28/11/2014.
  */
-class ListerMessagesTask extends AsyncTask<String, Void, Boolean> {
+class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
 
     interface OnTaskEvent {
         public void onPreExecute();
-        public void onFinish(Boolean result);
+        public ArrayList<String> onDoIn(String... strings);
+        public void onFinish(ArrayList<String> result);
     }
 
     OnTaskEvent onTaskEvent;
@@ -26,13 +30,16 @@ class ListerMessagesTask extends AsyncTask<String, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... strings) {
-        return null;
+    protected ArrayList<String> doInBackground(String... strings) {
+
+        // Defined Array values to show in ListView
+       return onTaskEvent.onDoIn(strings);
+
     }
 
     @Override
-    protected void onPostExecute(Boolean aBoolean) {
-        super.onPostExecute(aBoolean);
-        onTaskEvent.onFinish(aBoolean);
+    protected void onPostExecute(ArrayList<String> result) {
+        super.onPostExecute(result);
+        onTaskEvent.onFinish(result);
     }
 }
