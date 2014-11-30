@@ -9,6 +9,7 @@ public class EnvoyerMessageTask extends AsyncTask<String, Void, Boolean> {
 
     interface OnTaskEvent {
         public void onPreExecute();
+        public boolean onDoIn(String...strings);
         public void onFinish(Boolean result);
     }
 
@@ -26,7 +27,7 @@ public class EnvoyerMessageTask extends AsyncTask<String, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(String... strings) {
-        return null;
+        return onTaskEvent.onDoIn(strings);
     }
 
     @Override

@@ -15,7 +15,7 @@
             android:id="@+id/btn_lister"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Liste messages"
+            android:text="Liste des messages"
             android:layout_gravity="center"
             android:padding="30dp"/>
 
@@ -23,7 +23,7 @@
             android:id="@+id/btn_envoyer"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Envoyer messages"
+            android:text="Envoyer un message"
             android:layout_gravity="center"
             android:padding="30dp"
             android:layout_below="@+id/btn_lister"/>
