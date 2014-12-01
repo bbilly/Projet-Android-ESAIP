@@ -75,7 +75,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
     public boolean onDoIn(String... params) {
         try {
             DefaultHttpClient client = new DefaultHttpClient();
-            URI uri = new URI("http","formation-android-esaip.herokuapp.com","/connect/baptiste/test/"+params[0],"");
+            URI uri = new URI("http","formation-android-esaip.herokuapp.com","/message/baptiste/test/"+params[0],"");
             HttpGet request = new HttpGet(uri.toASCIIString());
             //HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/message/baptiste/test/"+params[0]);
 
