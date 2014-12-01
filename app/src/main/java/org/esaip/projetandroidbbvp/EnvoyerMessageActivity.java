@@ -45,7 +45,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_envoyer_message, menu);
+        getMenuInflater().inflate(R.menu.menu_accueil, menu);
         return true;
     }
 
@@ -77,9 +77,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
             DefaultHttpClient client = new DefaultHttpClient();
             URI uri = new URI("http","formation-android-esaip.herokuapp.com","/message/baptiste/test/"+params[0],"");
             HttpGet request = new HttpGet(uri.toASCIIString());
-            //HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/message/baptiste/test/"+params[0]);
 
-            Log.i("", uri.toASCIIString());
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
             if(res.equals(""))
@@ -98,7 +96,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
 
     @Override
     public void onFinish(Boolean result) {
-        if(result == true) {
+        if(result) {
             Intent intent = new Intent(getApplicationContext(), ListerMessagesActivity.class);
             startActivity(intent);
         }

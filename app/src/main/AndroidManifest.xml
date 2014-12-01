@@ -15,7 +15,8 @@
         <activity
             android:name="org.esaip.projetandroidbbvp.ConnexionActivity"
             android:label="@string/titre_application"
-            android:theme="@style/AppThemeConnection" >
+            android:theme="@style/AppThemeConnection"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

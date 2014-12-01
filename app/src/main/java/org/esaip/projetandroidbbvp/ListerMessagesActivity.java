@@ -51,7 +51,7 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_lister_messages, menu);
+        getMenuInflater().inflate(R.menu.menu_accueil, menu);
         return true;
     }
 

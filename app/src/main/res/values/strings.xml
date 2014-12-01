@@ -24,5 +24,7 @@
 
     <string name="oui">Oui</string>
     <string name="non">Non</string>
+    <string name="refresh">Rafraîchir</string>
+    <string name="envoyer">Envoyer</string>
 
 </resources>
