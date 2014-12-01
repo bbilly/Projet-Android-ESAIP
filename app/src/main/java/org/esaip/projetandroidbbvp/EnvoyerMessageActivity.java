@@ -18,6 +18,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTask.OnTaskEvent {
@@ -70,12 +72,14 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
     }
 
     @Override
-    public boolean onDoIn(String... strings) {
+    public boolean onDoIn(String... params) {
         try {
             DefaultHttpClient client = new DefaultHttpClient();
+            URI uri = new URI("http","formation-android-esaip.herokuapp.com","/connect/baptiste/test/"+params[0],"");
+            HttpGet request = new HttpGet(uri.toASCIIString());
+            //HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/message/baptiste/test/"+params[0]);
 
-            HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/message/baptiste/test/"+strings[0]);
-            Log.i("", strings[0]);
+            Log.i("", uri.toASCIIString());
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
             if(res.equals(""))
@@ -85,6 +89,8 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         return false;
