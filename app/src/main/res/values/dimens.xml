@@ -3,5 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="header_connexion">60dp</dimen>
+    <dimen name="height_text_edit">200dp</dimen>
 
 </resources>

@@ -16,13 +16,13 @@
       <EditText
           android:id="@+id/texte_message"
           android:layout_width="match_parent"
-          android:layout_height="200dp"
+          android:layout_height="@dimen/height_text_edit"
           android:background="@android:color/white"/>
         <Button
             android:id="@+id/btn_envoyer_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Envoyer"/>
+            android:text="@string/envoyer"/>
     </LinearLayout>
 
 </RelativeLayout>
