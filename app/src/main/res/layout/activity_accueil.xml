@@ -1,9 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
     tools:context="org.esaip.projetandroidbbvp.AccueilActivity">
 
     <LinearLayout
@@ -13,18 +10,34 @@
         android:gravity="center">
         <Button
             android:id="@+id/btn_lister"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Liste des messages"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
+            android:text="@string/title_activity_lister_messages"
             android:layout_gravity="center"
             android:padding="30dp"/>
 
         <Button
             android:id="@+id/btn_envoyer"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Envoyer un message"
+            android:text="@string/title_activity_envoyer_message"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="30dp"
+            android:layout_below="@+id/btn_lister"/>
+        <Button
+            android:id="@+id/btn_bubble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_bubble"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:padding="30dp"
             android:layout_below="@+id/btn_lister"/>
     </LinearLayout>

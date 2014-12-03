@@ -11,10 +11,12 @@ import java.util.ArrayList;
  */
 class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
 
+
     interface OnTaskEvent {
         public void onPreExecute();
         public ArrayList<String> onDoIn(String... strings);
         public void onFinish(ArrayList<String> result);
+
     }
 
     OnTaskEvent onTaskEvent;

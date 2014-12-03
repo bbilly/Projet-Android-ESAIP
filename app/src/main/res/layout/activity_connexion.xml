@@ -115,12 +115,18 @@
             android:text="@string/vider"
             android:layout_weight="1"
             android:layout_width="match_parent"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
+            android:layout_marginRight="5dp"
             android:layout_height="match_parent"/>
 
         <Button
             android:id="@+id/validateButton"
             android:text="@string/valider"
+            android:textColor="@android:color/white"
+            android:background="@android:color/holo_blue_light"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

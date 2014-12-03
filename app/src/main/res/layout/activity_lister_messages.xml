@@ -24,7 +24,9 @@
         <Button
             android:id="@+id/btn_rafraichir"
             android:layout_width="match_parent"
+            android:background="@android:color/holo_blue_light"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:textAlignment="center"
             android:text="@string/refresh"></Button>
     </LinearLayout>

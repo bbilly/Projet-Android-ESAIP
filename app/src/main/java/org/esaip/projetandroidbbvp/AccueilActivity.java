@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,11 @@ public class AccueilActivity extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
+        //parametres
+        final String user = getIntent().getExtras().getString("user");
+        final String password = getIntent().getExtras().getString("password");
+
         //on recupere les boutons dans la vue grace à leurs ids
         btn_lister = (Button) findViewById(R.id.btn_lister);
         btn_envoyer = (Button) findViewById(R.id.btn_envoyer);
@@ -27,6 +33,10 @@ public class AccueilActivity extends Activity  {
         btn_lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), ListerMessagesActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("password",password);
+                //Permet de fermer les fenetres precedentes
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -34,6 +44,10 @@ public class AccueilActivity extends Activity  {
         btn_envoyer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), EnvoyerMessageActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("password",password);
+                //Permet de fermer les fenetres precedentes
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -64,6 +78,8 @@ public class AccueilActivity extends Activity  {
                             editor.clear();
                             editor.commit();
                             Intent intent = new Intent(AccueilActivity.this, ConnexionActivity.class);
+                            //Permet de fermer les fenetres precedentes
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
 
                         }

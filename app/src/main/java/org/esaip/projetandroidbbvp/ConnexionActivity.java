@@ -9,7 +9,6 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +62,6 @@ public class ConnexionActivity extends Activity {
 
         //Permet de garder les "credentials" en mémoire
         SharedPreferences mPrefs = this.getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
-        Log.i("test", mPrefs.getAll().toString());
         if(mPrefs.getBoolean("connected",false)){
 
             editTextUsername = (EditText)findViewById(R.id.userNameEditText);
@@ -205,7 +202,12 @@ public class ConnexionActivity extends Activity {
                     editor.commit();
                 }
                 Intent intent = new Intent(ConnexionActivity.this, AccueilActivity.class);
+
+                //On passe les parametres
                 intent.putExtra("user", editTextUsername.getText().toString());
+                intent.putExtra("password",editTextPassword.getText().toString());
+                //Permet de fermer les fenetres precedentes
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 ConnexionActivity.this.finish();
 
