@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nom_application">ProjetAndroidBBVP</string>
+    <string name="hello_world">Test</string>
+    <string name="quitter">Exit</string>
+    <string name="deconnexion">Disconnect</string>
+    <string name="titre_application">BBVP</string>
+    <string name="nom_projet">Connection BBVP</string>
+    <string name="utilisateur">Your name</string>
+    <string name="mot_de_passe">Your password</string>
+    <string name="rester_connecte">Stay connected ?</string>
+    <string name="erreur">Username or password wrong !</string>
+    <string name="vider">Empty</string>
+    <string name="valider">Submit</string>
+    <string name="noServer">Unable to access the server, please try again later</string>
+
+    <string name="title_activity_accueil">Welcome!</string>
+    <string name="title_activity_lister_messages">Messages list</string>
+    <string name="title_activity_envoyer_message">Send a message</string>
+
+    <string name="deconnexion_message">Are you sure you want to disconnect ?</string>
+    <string name="quitter_message">Are you sure you want to quit ?</string>
+
+    <string name="oui">Yes</string>
+    <string name="non">No</string>
+    <string name="refresh">Refresh</string>
+    <string name="envoyer">Send</string>
+    <string name="title_activity_bubble">Bubble !</string>
+    <string name="auteur">Author</string>
+    <string name="message">message</string>
+
+</resources>
