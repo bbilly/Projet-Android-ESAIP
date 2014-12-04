@@ -38,6 +38,11 @@
             android:theme="@style/AppTheme"
             android:label="@string/title_activity_envoyer_message" >
         </activity>
+        <activity
+            android:name="org.esaip.projetandroidbbvp.bubbleActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/title_activity_envoyer_message" >
+        </activity>
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class AccueilActivity extends Activity  {
     Button btn_lister = null;
     Button btn_envoyer = null;
+    Button btn_bubble = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class AccueilActivity extends Activity  {
         //on recupere les boutons dans la vue grace à leurs ids
         btn_lister = (Button) findViewById(R.id.btn_lister);
         btn_envoyer = (Button) findViewById(R.id.btn_envoyer);
+        btn_bubble = (Button) findViewById(R.id.btn_bubble);
 
         //evenement lors du clic sur le bouton lister messages
         btn_lister.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,17 @@ public class AccueilActivity extends Activity  {
         btn_envoyer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), EnvoyerMessageActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("password",password);
+                //Permet de fermer les fenetres precedentes
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        //evenement lors du clic sur le bouton bubble
+        btn_bubble.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), bubbleActivity.class);
                 intent.putExtra("user", user);
                 intent.putExtra("password",password);
                 //Permet de fermer les fenetres precedentes

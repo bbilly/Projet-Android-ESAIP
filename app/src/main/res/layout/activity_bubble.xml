@@ -1,0 +1,57 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/name"
+        android:background="@android:color/holo_blue_light"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textViewConnection"
+            android:paddingTop="15sp"
+            android:paddingLeft="50sp"
+            android:text="Essayez de faire le meilleur score ! "
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/name"
+        android:layout_above="@+id/LinearLayoutFooterAccueil"
+        android:id="@+id/circleZone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+        <org.esaip.projetandroidbbvp.Circle
+            android:id="@+id/circleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:id="@+id/LinearLayoutFooterAccueil"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/AsciiButton"
+            android:text="Commencer ! "
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</RelativeLayout>
