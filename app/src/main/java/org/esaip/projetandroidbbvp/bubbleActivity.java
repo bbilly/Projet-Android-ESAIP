@@ -39,8 +39,8 @@ public class bubbleActivity extends Activity {
         setContentView(R.layout.activity_bubble);
 
         //parametres
-        final String user = getIntent().getExtras().getString("user");
-        final String password = getIntent().getExtras().getString("password");
+        this.user = getIntent().getExtras().getString("user");
+        this.password = getIntent().getExtras().getString("password");
 
         Bundle extras = getIntent().getExtras();
 

@@ -140,7 +140,8 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
             DefaultHttpClient client = new DefaultHttpClient();
             URI uri = new URI("http","formation-android-esaip.herokuapp.com","/message/"+user+"/"+password+"/"+params[0],"");
             HttpGet request = new HttpGet(uri.toASCIIString());
-
+            Log.i("",params[0]);
+            Log.i("",uri.toASCIIString());
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
             if(res.equals(""))
