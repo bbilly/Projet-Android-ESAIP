@@ -1,6 +1,9 @@
 package org.esaip.projetandroidbbvp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
@@ -43,5 +46,6 @@ class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
     protected void onPostExecute(ArrayList<String> result) {
         super.onPostExecute(result);
         onTaskEvent.onFinish(result);
+
     }
 }

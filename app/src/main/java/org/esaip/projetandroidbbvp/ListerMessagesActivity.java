@@ -3,10 +3,14 @@ package org.esaip.projetandroidbbvp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +27,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class ListerMessagesActivity extends Activity implements ListerMessagesTask.OnTaskEvent {
@@ -43,6 +48,7 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
 
         // Get ListView object from xml
         maliste = (ListView) findViewById(R.id.list);
+
         //on appelle la tache pour lister les messages
         new ListerMessagesTask(this).execute();
 
@@ -142,8 +148,9 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
             for(String m : res.split(";") ) {
                 String auteur = m.substring(0, m.indexOf(":"));
                 String message = m.substring(m.indexOf(":")+1);
-                les_messages.add(message);
+                les_messages.add(auteur+" à dit : \n\n"+message+"\n");
             }
+            Collections.reverse(les_messages);
             return les_messages;
         } catch (ClientProtocolException e) {
             e.printStackTrace();
@@ -155,17 +162,43 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
 
     @Override
     public void onFinish(ArrayList<String> result) {
-        if(result.size() !=0) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1,result);
-            maliste = (ListView) findViewById(R.id.list);
-            // Assign adapter to ListView
-            maliste.setAdapter(adapter);
+        //On vérifie la connexion internet
+        if(isOnline()){
+            if(result.size() !=0) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1,result);
+                maliste = (ListView) findViewById(R.id.list);
+                // Assign adapter to ListView
+                maliste.setAdapter(adapter);
+            }
+            else
+                Toast.makeText(getApplicationContext(),"Aucun message !",Toast.LENGTH_LONG);
+            //on supprime le loader de l'écran
+            if (progress.isShowing()) {
+                progress.dismiss();
+            }
+        }else {
+                /*
+                Permet d'appliquer un delai de 5s
+                 */
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(),R.string.noServer, Toast.LENGTH_SHORT).show();
+                    ListerMessagesActivity.this.finish();
+                }
+            }, 5000);
         }
-        else
-            Toast.makeText(getApplicationContext(),"Aucun message !",Toast.LENGTH_LONG);
-        //on supprime le loader de l'écran
-        if (progress.isShowing()) {
-            progress.dismiss();
-        }
+
+    }
+    /**
+     * Permet de retourner l'etat de la connexion internet
+     * @return true si la connexion existe
+     */
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

@@ -3,16 +3,22 @@ package org.esaip.projetandroidbbvp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -150,19 +156,46 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
 
     @Override
     public void onFinish(Boolean result) {
-        if(result) {
-            Intent intent = new Intent(getApplicationContext(), ListerMessagesActivity.class);
-            intent.putExtra("user", user);
-            intent.putExtra("password",password);
-            //Permet de fermer les fenetres precedentes
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-        else
-            Toast.makeText(getApplicationContext(),"Erreur ! Réessayer plus tard",Toast.LENGTH_SHORT);
+        //On vérifie la connexion internet
+        if(isOnline()){
+            if(result) {
+                Intent intent = new Intent(getApplicationContext(), ListerMessagesActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("password",password);
+                //Permet de fermer les fenetres precedentes
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+            else
+                Toast.makeText(getApplicationContext(),"Erreur ! Réessayer plus tard",Toast.LENGTH_SHORT);
 
-        if (progress.isShowing()) {
-            progress.dismiss();
+            if (progress.isShowing()) {
+                progress.dismiss();
+            }
+        }else {
+                /*
+                Permet d'appliquer un delai de 5s
+                 */
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(),R.string.noServer, Toast.LENGTH_SHORT).show();
+                    EnvoyerMessageActivity.this.finish();
+                }
+            }, 5000);
         }
+
+    }
+
+    /**
+     * Permet de retourner l'etat de la connexion internet
+     * @return true si la connexion existe
+     */
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
