@@ -166,15 +166,9 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
         //On vérifie la connexion internet
         if(isOnline()){
             if(result.size() !=0) {
-                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1,result);
-                //maliste = (ListView) findViewById(R.id.list);
-                // Assign adapter to ListView
-                //maliste.setAdapter(adapter);
-                ListView yourListView = (ListView) findViewById(R.id.list);
-
+                ListView liste_view= (ListView) findViewById(R.id.list);
                 ListAdapter customAdapter = new ListAdapter(this, R.layout.list_messages, result);
-
-                yourListView.setAdapter(customAdapter);
+                liste_view.setAdapter(customAdapter);
             }
             else
                 Toast.makeText(getApplicationContext(),"Aucun message !",Toast.LENGTH_LONG);
