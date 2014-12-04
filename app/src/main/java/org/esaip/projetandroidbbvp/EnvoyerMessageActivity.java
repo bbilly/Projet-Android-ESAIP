@@ -38,7 +38,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
     //parametres
     String user;
     String password;
-
+    String preText ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +46,12 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
         //on recupere les parametres
         user = getIntent().getExtras().getString("user");
         password = getIntent().getExtras().getString("password");
-
+        preText = getIntent().getExtras().getString("preText");
         setContentView(R.layout.activity_envoyer_message);
         message = (EditText) findViewById(R.id.texte_message);
+
+        message.setText(preText);
+
         envoie = (Button) findViewById(R.id.btn_envoyer_msg);
         envoie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +165,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
                 Intent intent = new Intent(getApplicationContext(), ListerMessagesActivity.class);
                 intent.putExtra("user", user);
                 intent.putExtra("password",password);
+                intent.putExtra("preText",preText);
                 //Permet de fermer les fenetres precedentes
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
