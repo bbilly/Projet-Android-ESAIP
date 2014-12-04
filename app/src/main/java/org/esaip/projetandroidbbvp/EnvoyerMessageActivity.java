@@ -11,14 +11,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -140,8 +137,6 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
             DefaultHttpClient client = new DefaultHttpClient();
             URI uri = new URI("http","formation-android-esaip.herokuapp.com","/message/"+user+"/"+password+"/"+params[0],"");
             HttpGet request = new HttpGet(uri.toASCIIString());
-            Log.i("",params[0]);
-            Log.i("",uri.toASCIIString());
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
             if(res.equals(""))
