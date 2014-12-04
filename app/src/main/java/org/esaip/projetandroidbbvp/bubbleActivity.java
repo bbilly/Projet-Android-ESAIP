@@ -93,7 +93,7 @@ public class bubbleActivity extends Activity {
                                 Intent intent = new Intent(getApplication(), EnvoyerMessageActivity.class);
                                 intent.putExtra("user", user);
                                 intent.putExtra("password",password);
-                                intent.putExtra("preText","J'ai fait "+numberOfCircle+" cercles sur Bubble! Viens c'est génial!");
+                                intent.putExtra("preText","J'ai fait "+numberOfCircle+" cercles sur Bubble! Viens on est bien, bien, bieeeeeeeennnnnnnnnnnnn!");
                                 //Permet de fermer les fenetres precedentes
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
