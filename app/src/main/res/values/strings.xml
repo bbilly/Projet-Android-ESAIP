@@ -27,5 +27,7 @@
     <string name="refresh">Rafraîchir</string>
     <string name="envoyer">Envoyer</string>
     <string name="title_activity_bubble">Bubble !</string>
+    <string name="auteur">auteur</string>
+    <string name="message">message</string>
 
 </resources>

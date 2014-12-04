@@ -137,18 +137,19 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
     }
 
     @Override
-    public ArrayList<String> onDoIn(String... strings) {
+    public ArrayList<Message> onDoIn(String... strings) {
         try {
             DefaultHttpClient client = new DefaultHttpClient();
 
             HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/messages/"+user+"/"+password);
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
-            ArrayList<String> les_messages = new ArrayList<String>();
+            ArrayList<Message> les_messages = new ArrayList<Message>();
             for(String m : res.split(";") ) {
                 String auteur = m.substring(0, m.indexOf(":"));
                 String message = m.substring(m.indexOf(":")+1);
-                les_messages.add(auteur+" à dit : \n\n"+message+"\n");
+                Message mes = new Message(auteur,message);
+                les_messages.add(mes);
             }
             Collections.reverse(les_messages);
             return les_messages;
@@ -161,14 +162,13 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
     }
 
     @Override
-    public void onFinish(ArrayList<String> result) {
+    public void onFinish(ArrayList<Message> result) {
         //On vérifie la connexion internet
         if(isOnline()){
             if(result.size() !=0) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1,result);
-                maliste = (ListView) findViewById(R.id.list);
-                // Assign adapter to ListView
-                maliste.setAdapter(adapter);
+                ListView liste_view= (ListView) findViewById(R.id.list);
+                ListAdapter customAdapter = new ListAdapter(this, R.layout.list_messages, result);
+                liste_view.setAdapter(customAdapter);
             }
             else
                 Toast.makeText(getApplicationContext(),"Aucun message !",Toast.LENGTH_LONG);

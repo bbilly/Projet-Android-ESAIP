@@ -12,13 +12,13 @@ import java.util.ArrayList;
 /**
  * Created by Baptiste on 28/11/2014.
  */
-class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
+class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<Message> > {
 
 
     interface OnTaskEvent {
         public void onPreExecute();
-        public ArrayList<String> onDoIn(String... strings);
-        public void onFinish(ArrayList<String> result);
+        public ArrayList<Message> onDoIn(String... strings);
+        public void onFinish(ArrayList<Message> result);
 
     }
 
@@ -35,7 +35,7 @@ class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
     }
 
     @Override
-    protected ArrayList<String> doInBackground(String... strings) {
+    protected ArrayList<Message> doInBackground(String... strings) {
 
         // Defined Array values to show in ListView
        return onTaskEvent.onDoIn(strings);
@@ -43,7 +43,7 @@ class ListerMessagesTask extends AsyncTask<String, Void, ArrayList<String> > {
     }
 
     @Override
-    protected void onPostExecute(ArrayList<String> result) {
+    protected void onPostExecute(ArrayList<Message> result) {
         super.onPostExecute(result);
         onTaskEvent.onFinish(result);
 
