@@ -75,7 +75,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
         //noinspection SimplifiableIfStatement
         if (id == R.id.deconnexion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir vous deconnecter?")
+            builder.setMessage(R.string.deconnexion_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -104,7 +104,7 @@ public class EnvoyerMessageActivity extends Activity implements EnvoyerMessageTa
         if (id == R.id.quitter) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir quitter?")
+            builder.setMessage(R.string.quitter_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

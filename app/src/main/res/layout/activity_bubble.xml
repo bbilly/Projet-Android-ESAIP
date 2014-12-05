@@ -18,7 +18,7 @@
             android:id="@+id/textViewBubble"
             android:paddingTop="15sp"
             android:paddingLeft="50sp"
-            android:text="Essayez de faire le meilleur score ! "
+            android:text="@string/meilleur_score"
             android:textColor="@android:color/white"/>
         <TextView
 
@@ -57,7 +57,7 @@
 
         <Button
             android:id="@+id/AsciiButton"
-            android:text="Commencer ! "
+            android:text="@string/commencer"
             android:layout_weight="1"
             android:background="@android:color/holo_blue_light"
             android:textColor="@android:color/white"

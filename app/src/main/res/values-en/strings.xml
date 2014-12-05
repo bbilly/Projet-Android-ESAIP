@@ -11,7 +11,7 @@
     <string name="mot_de_passe">Your password</string>
     <string name="rester_connecte">Stay connected ?</string>
     <string name="erreur">Username or password wrong !</string>
-    <string name="vider">Empty</string>
+    <string name="vider">Clear</string>
     <string name="valider">Submit</string>
     <string name="noServer">Unable to access the server, please try again later</string>
 
@@ -26,8 +26,11 @@
     <string name="non">No</string>
     <string name="refresh">Refresh</string>
     <string name="envoyer">Send</string>
-    <string name="title_activity_bubble">Play to Bubble !</string>
+    <string name="title_activity_bubble">Play Bubble !</string>
     <string name="auteur">Author</string>
     <string name="message">message</string>
+
+    <string name="meilleur_score">Try to do your best</string>
+    <string name="commencer">Begin !</string>
 
 </resources>

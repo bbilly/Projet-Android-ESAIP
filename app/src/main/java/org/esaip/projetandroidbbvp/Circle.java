@@ -129,25 +129,6 @@ public class Circle extends SurfaceView implements GestureDetector.OnDoubleTapLi
 
     @Override
     public boolean onDown(MotionEvent event) {
-        /*x = event.getX();
-        y = event.getY();
-        Boolean addCircle = false;
-        randomColor = Color.rgb(rnd.nextInt(),rnd.nextInt(),rnd.nextInt());
-        Cercle cercle=null;
-
-        for(Cercle i:CircleStack) {
-            if (coordinateBelongToCircle(x, y,i)) {
-                cercle=i;
-                cercleSelected=cercle;
-                break;
-            }
-        }
-        if(cercle==null){
-            cercle = new Cercle(y,x,randomColor);
-            CircleStack.add(cercle);
-            cercleSelected=cercle;
-        }
-        invalidate();*/
         return false;
     }
 

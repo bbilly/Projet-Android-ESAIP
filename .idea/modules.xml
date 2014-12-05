@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidBBVP.iml" filepath="$PROJECT_DIR$/AndroidBBVP.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjetAndroidBBVP.iml" filepath="$PROJECT_DIR$/ProjetAndroidBBVP.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjetAndroidBBVP_v2.iml" filepath="$PROJECT_DIR$/ProjetAndroidBBVP_v2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

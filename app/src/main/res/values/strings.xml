@@ -30,4 +30,7 @@
     <string name="auteur">auteur</string>
     <string name="message">message</string>
 
+    <string name="meilleur_score">Essayez de faire le meilleur score !</string>
+    <string name="commencer">Commencer !</string>
+
 </resources>

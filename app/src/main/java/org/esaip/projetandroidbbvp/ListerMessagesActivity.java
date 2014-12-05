@@ -11,11 +11,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -82,7 +80,7 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
         //noinspection SimplifiableIfStatement
         if (id == R.id.deconnexion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir vous deconnecter?")
+            builder.setMessage(R.string.deconnexion_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -110,7 +108,7 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
         if (id == R.id.quitter) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir quitter?")
+            builder.setMessage(R.string.quitter_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

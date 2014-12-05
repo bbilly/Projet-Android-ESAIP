@@ -1,19 +1,15 @@
 package org.esaip.projetandroidbbvp;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 public class AccueilActivity extends Activity  {
     Button btn_lister = null;
     Button btn_envoyer = null;
@@ -81,7 +77,7 @@ public class AccueilActivity extends Activity  {
         //noinspection SimplifiableIfStatement
         if (id == R.id.deconnexion) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir vous deconnecter?")
+            builder.setMessage(R.string.deconnexion_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -110,7 +106,7 @@ public class AccueilActivity extends Activity  {
         if (id == R.id.quitter) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Etes vous sûr de vouloir quitter?")
+            builder.setMessage(R.string.quitter_message)
                     .setCancelable(false)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -134,35 +130,4 @@ public class AccueilActivity extends Activity  {
     Surcharge de la méthode onbackpressed pour permettre de quitter l'application en
     cliquant sur le bouton retour
      */
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Etes vous sûr de vouloir quitter?")
-                .setCancelable(false)
-                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        AccueilActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-
-    }
-/*
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            setContentView(R.layout.activity_accueil_landscape);
-        }
-        else {
-            setContentView(R.layout.activity_accueil);
-        }
-    }
-    */
 }
