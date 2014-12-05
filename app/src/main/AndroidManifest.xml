@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.esaip.projetandroidbbvp" >
+    package="org.esaip.projetandroidbbvp"
+    android:versionCode="2"
+    android:versionName="2.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -42,6 +44,7 @@
             android:name="org.esaip.projetandroidbbvp.bubbleActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_envoyer_message" >
         </activity>
     </application>
