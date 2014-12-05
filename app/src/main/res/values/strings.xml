@@ -19,7 +19,7 @@
     <string name="title_activity_lister_messages">Liste des messages</string>
     <string name="title_activity_envoyer_message">Envoyer un message</string>
 
-    <string name="deconnexion_message">Etes vous sûr de vouloir vous deconnecter?</string>
+    <string name="deconnexion_message">Etes vous sûr de vouloir vous déconnecter?</string>
     <string name="quitter_message">Etes vous sûr de vouloir quitter?</string>
 
     <string name="oui">Oui</string>
