@@ -26,6 +26,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -140,8 +142,8 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
     public ArrayList<Message> onDoIn(String... strings) {
         try {
             DefaultHttpClient client = new DefaultHttpClient();
-
-            HttpGet request = new HttpGet("http://formation-android-esaip.herokuapp.com/messages/"+user+"/"+password);
+            URI uri = new URI("http","formation-android-esaip.herokuapp.com","/messages/"+user+"/"+password,"");
+            HttpGet request = new HttpGet(uri.toASCIIString());
             HttpResponse response = client.execute(request);
             String res  = InputStreamToString.convert(response.getEntity().getContent());
             ArrayList<Message> les_messages = new ArrayList<Message>();
@@ -157,8 +159,10 @@ public class ListerMessagesActivity extends Activity implements ListerMessagesTa
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
-       return null;
+        return null;
     }
 
     @Override
