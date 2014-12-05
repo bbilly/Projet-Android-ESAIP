@@ -41,6 +41,7 @@
         <activity
             android:name="org.esaip.projetandroidbbvp.bubbleActivity"
             android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_envoyer_message" >
         </activity>
     </application>
