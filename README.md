@@ -12,3 +12,6 @@ Features :
 <i>Auteurs :</i>
 - Perraudeau Victor
 - Billy Baptiste
+
+
+Vous pouvez télécharger l'APK à l'adresse suivante : <a href="http://dev.baptistebilly.com/BBVP.apk">BBVP.apk</a>
